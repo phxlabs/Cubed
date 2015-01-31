@@ -9,11 +9,9 @@ public class CubedPlugin extends JavaPlugin
 {
 
 	private String pluginName = "default";
-	// Major.minor
 	private double pluginVersion = 1.0;
 
 	private static CubedPlugin instance;
-
 	private Managers managers;
 
 	public CubedPlugin(String pluginName, double pluginVersion)
