@@ -3,6 +3,7 @@ package com.bluefire.cubed;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.bluefire.cubed.managers.Managers;
+import com.bluefire.cubed.managers.list.PluginManager;
 import com.bluefire.cubed.objects.Manager;
 
 public class CubedPlugin extends JavaPlugin
@@ -26,6 +27,7 @@ public class CubedPlugin extends JavaPlugin
 		setInstance(this);
 		setManagers(new Managers());
 		getManagers().init(this);
+		getManagers().addManager(new PluginManager());
 	}
 
 	@Override
@@ -33,6 +35,12 @@ public class CubedPlugin extends JavaPlugin
 	{
 		for (Manager manager : getManagers().getManagers())
 			manager.onUnLoad(this);
+	}
+
+	public void addManager(Manager manager)
+	{
+		getManagers().addManager(manager);
+		manager.onLoad(this);
 	}
 
 	/**
